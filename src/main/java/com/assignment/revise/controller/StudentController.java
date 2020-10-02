@@ -29,13 +29,10 @@ public class StudentController {
 
 	@PostMapping("/save")
 	public String saveStudent(@RequestBody Student student) {
-		// relativeRepository.saveAll(student.getRelatives());
-		
 		if (null != studentRepository.save(student))
 			return "Success";
 		else
 			return "error";
-
 	}
 
 	@GetMapping("/get-all")
@@ -55,26 +52,6 @@ public class StudentController {
 		studentRepository.deleteById(id);
 	}
 
-//	@PutMapping("/update")
-//	public void updateStudent(@RequestBody Student stud) {
-//		Optional<Student> s = studentRepository.findById(stud.getsId());
-//		s.get().setsName(stud.getsName());
-//		s.get().setsMarks(stud.getsMarks());
-//		// s.get().setRelatives(stud.getRelatives());
-//
-//		for (Relative re : s.get().getRelatives()) {
-//			//Optional<Relative> rel = relativeRepository.findById(re.getrId());
-//			for(Relative rrr : stud.getRelatives()) {
-//				re.setrName(rrr.getrName());
-//				re.setRelation(rrr.getRelation());
-//				
-//			}
-//			relativeRepository.save(re);
-//		}
-//
-//		studentRepository.save(s.get());
-//
-//	}
 	@PutMapping("/update")
 	public void updateStudent(@RequestBody Student stud) {
 		Optional<Student> s = studentRepository.findById(stud.getsId());
@@ -82,6 +59,5 @@ public class StudentController {
 		s.get().setsMarks(stud.getsMarks());
 		s.get().setRelatives(stud.getRelatives());
 		studentRepository.save(stud);
-
 	}
 }
